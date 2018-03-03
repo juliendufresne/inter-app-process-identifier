@@ -1,2 +1,5 @@
 includes:
 	- vendor/phpstan/phpstan-phpunit/extension.neon
+parameters:
+    autoload_files:
+        - %rootDir%/../../../tests/Factory/Generator/RamseyUuidGeneratorTest.php
