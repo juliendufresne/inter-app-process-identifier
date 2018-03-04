@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace JulienDufresne\InterAppRequestIdentifier\Tests;
+namespace JulienDufresne\RequestId\Tests;
 
-use JulienDufresne\InterAppRequestIdentifier\RequestIdentifier;
+use JulienDufresne\RequestId\RequestId;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \JulienDufresne\InterAppRequestIdentifier\RequestIdentifier
+ * @covers \JulienDufresne\RequestId\RequestId
  */
-final class RequestIdentifierTest extends TestCase
+final class RequestIdTest extends TestCase
 {
     public function testCreate()
     {
-        $object = new RequestIdentifier('foo', 'bar', 'baz');
+        $object = new RequestId('foo', 'bar', 'baz');
 
         $this->assertEquals('foo', $object->getCurrentAppRequestId());
         $this->assertEquals('bar', $object->getParentAppRequestId());
@@ -23,7 +23,7 @@ final class RequestIdentifierTest extends TestCase
 
     public function testCreateWithParent()
     {
-        $object = new RequestIdentifier('foo', 'bar');
+        $object = new RequestId('foo', 'bar');
 
         $this->assertEquals('foo', $object->getCurrentAppRequestId());
         $this->assertEquals('bar', $object->getParentAppRequestId());
@@ -32,7 +32,7 @@ final class RequestIdentifierTest extends TestCase
 
     public function testCreateWithDefault()
     {
-        $object = new RequestIdentifier('foo');
+        $object = new RequestId('foo');
 
         $this->assertEquals('foo', $object->getCurrentAppRequestId());
         $this->assertEquals('foo', $object->getRootAppRequestId());

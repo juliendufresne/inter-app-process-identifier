@@ -25,9 +25,9 @@ Example
 -------
 
 ```php
-use JulienDufresne\InterAppRequestIdentifier\Factory\Generator\RamseyUuidGenerator;
-use JulienDufresne\InterAppRequestIdentifier\Factory\RequestIdFromConsoleFactory;
-use JulienDufresne\InterAppRequestIdentifier\Factory\RequestIdFromRequestFactory;
+use JulienDufresne\RequestId\Factory\Generator\RamseyUuidGenerator;
+use JulienDufresne\RequestId\Factory\RequestIdFromConsoleFactory;
+use JulienDufresne\RequestId\Factory\RequestIdFromRequestFactory;
 
 $generator = new RamseyUuidGenerator();
 
@@ -62,7 +62,7 @@ If you are using guzzle (package guzzlehttp/guzzle) to perform http requests, yo
 use GuzzleHttp\Client;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Middleware;
-use JulienDufresne\InterAppRequestIdentifier\Guzzle\RequestIdMiddleware;
+use JulienDufresne\RequestId\Guzzle\RequestIdMiddleware;
 
 $requestIdMiddleware = new RequestIdMiddleware(/* $requestIdentifier */);
 
@@ -76,8 +76,8 @@ $client = new Client(['handler' => $stack]);
 or use our factory to create a guzzle client:
 
 ```php
-use JulienDufresne\InterAppRequestIdentifier\Guzzle\ClientFactory;
-use JulienDufresne\InterAppRequestIdentifier\Guzzle\RequestIdMiddleware;
+use JulienDufresne\RequestId\Guzzle\ClientFactory;
+use JulienDufresne\RequestId\Guzzle\RequestIdMiddleware;
 
 $requestIdMiddleware = new RequestIdMiddleware(/* $requestIdentifier */);
 
@@ -94,7 +94,7 @@ By default, sent headers are:
 You can change this in the middleware:
 
 ```php
-use JulienDufresne\InterAppRequestIdentifier\Guzzle\RequestIdMiddleware;
+use JulienDufresne\RequestId\Guzzle\RequestIdMiddleware;
 
 $requestIdMiddleware = new RequestIdMiddleware(
     /* $requestIdentifier */,
@@ -111,7 +111,7 @@ Monolog
 If you are using monolog to manage your application logs, you can use the [RequestIdentifierProcessor](/src/Monolog/RequestIdentifierProcessor.php):
 
 ```php
-use JulienDufresne\InterAppRequestIdentifier\Monolog\RequestIdentifierProcessor;
+use JulienDufresne\RequestId\Monolog\RequestIdentifierProcessor;
 use Monolog\Logger;
 
 $processor = new RequestIdentifierProcessor(/* $requestIdentifier */);
@@ -132,7 +132,7 @@ By default, the processor will add a `request_id` array entry in the `extra` sec
 You can change this in the processor instantiation:
 
 ```php
-use JulienDufresne\InterAppRequestIdentifier\Monolog\RequestIdentifierProcessor;
+use JulienDufresne\RequestId\Monolog\RequestIdentifierProcessor;
 
 $processor = new RequestIdentifierProcessor(
     /* $requestIdentifier */,

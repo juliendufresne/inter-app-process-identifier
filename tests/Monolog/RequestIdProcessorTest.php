@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace JulienDufresne\InterAppRequestIdentifier\Tests\Monolog;
+namespace JulienDufresne\RequestId\Tests\Monolog;
 
-use JulienDufresne\InterAppRequestIdentifier\Monolog\RequestIdentifierProcessor;
-use JulienDufresne\InterAppRequestIdentifier\RequestIdentifierInterface;
+use JulienDufresne\RequestId\Monolog\RequestIdProcessor;
+use JulienDufresne\RequestId\RequestIdInterface;
 use Monolog\Logger;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \JulienDufresne\InterAppRequestIdentifier\Monolog\RequestIdentifierProcessor
+ * @covers \JulienDufresne\RequestId\Monolog\RequestIdProcessor
  */
-final class RequestIdentifierProcessorTest extends TestCase
+final class RequestIdProcessorTest extends TestCase
 {
     public function testProcessor()
     {
@@ -22,7 +22,7 @@ final class RequestIdentifierProcessorTest extends TestCase
             'parent' => 'C',
         ];
 
-        $requestIdentifierMock = $this->createMock(RequestIdentifierInterface::class);
+        $requestIdentifierMock = $this->createMock(RequestIdInterface::class);
         $requestIdentifierMock->expects(self::once())
                                     ->method('getRootAppRequestId')
                                     ->willReturn($values['root']);
@@ -33,7 +33,7 @@ final class RequestIdentifierProcessorTest extends TestCase
                                     ->method('getCurrentAppRequestId')
                                     ->willReturn($values['current']);
 
-        $processor = new RequestIdentifierProcessor($requestIdentifierMock);
+        $processor = new RequestIdProcessor($requestIdentifierMock);
         $record = $processor(
             [
                 'message' => 'test',
@@ -60,7 +60,7 @@ final class RequestIdentifierProcessorTest extends TestCase
             'parent' => null,
         ];
 
-        $requestIdentifierFacadeMock = $this->createMock(RequestIdentifierInterface::class);
+        $requestIdentifierFacadeMock = $this->createMock(RequestIdInterface::class);
         $requestIdentifierFacadeMock->expects(self::once())
                                     ->method('getRootAppRequestId')
                                     ->willReturn($values['root']);
@@ -71,7 +71,7 @@ final class RequestIdentifierProcessorTest extends TestCase
                                     ->method('getCurrentAppRequestId')
                                     ->willReturn($values['current']);
 
-        $processor = new RequestIdentifierProcessor($requestIdentifierFacadeMock);
+        $processor = new RequestIdProcessor($requestIdentifierFacadeMock);
         $record = $processor(
             [
                 'message' => 'test',

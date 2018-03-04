@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace JulienDufresne\InterAppRequestIdentifier\Factory\Generator;
+namespace JulienDufresne\RequestId\Factory\Generator;
 
 use Ramsey\Uuid\Uuid;
 

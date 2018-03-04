@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace JulienDufresne\InterAppRequestIdentifier\Guzzle;
+namespace JulienDufresne\RequestId\Guzzle;
 
-use JulienDufresne\InterAppRequestIdentifier\RequestIdentifierInterface;
+use JulienDufresne\RequestId\RequestIdInterface;
 use Psr\Http\Message\RequestInterface;
 
 /*final */class RequestIdMiddleware
@@ -12,7 +12,7 @@ use Psr\Http\Message\RequestInterface;
     const DEFAULT_REQUEST_HEADER_NAME_ROOT = 'X-Root-Request-Id';
     const DEFAULT_REQUEST_HEADER_NAME_PARENT = 'X-Parent-Request-Id';
 
-    /** @var RequestIdentifierInterface */
+    /** @var RequestIdInterface */
     private $requestIdentifier;
     /** @var string */
     private $parentAppRequestHeaderName;
@@ -20,7 +20,7 @@ use Psr\Http\Message\RequestInterface;
     private $rootAppRequestHeaderName;
 
     public function __construct(
-        RequestIdentifierInterface $requestIdentifier,
+        RequestIdInterface $requestIdentifier,
         string $rootAppRequestHeaderName = self::DEFAULT_REQUEST_HEADER_NAME_ROOT,
         string $parentAppRequestHeaderName = self::DEFAULT_REQUEST_HEADER_NAME_PARENT
     ) {

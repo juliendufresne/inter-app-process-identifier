@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace JulienDufresne\InterAppRequestIdentifier;
+namespace JulienDufresne\RequestId;
 
-interface RequestIdentifierInterface
+interface RequestIdInterface
 {
     /**
      * Uniquely identifies the root application execution id.

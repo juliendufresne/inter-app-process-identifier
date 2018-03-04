@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace JulienDufresne\InterAppRequestIdentifier\Guzzle;
+namespace JulienDufresne\RequestId\Guzzle;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\HandlerStack;

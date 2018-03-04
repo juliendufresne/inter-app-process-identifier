@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace JulienDufresne\InterAppRequestIdentifier\Tests\Guzzle;
+namespace JulienDufresne\RequestId\Tests\Guzzle;
 
 use GuzzleHttp\HandlerStack;
-use JulienDufresne\InterAppRequestIdentifier\Guzzle\ClientFactory;
-use JulienDufresne\InterAppRequestIdentifier\Guzzle\RequestIdMiddleware;
+use JulienDufresne\RequestId\Guzzle\ClientFactory;
+use JulienDufresne\RequestId\Guzzle\RequestIdMiddleware;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \JulienDufresne\InterAppRequestIdentifier\Guzzle\ClientFactory
+ * @covers \JulienDufresne\RequestId\Guzzle\ClientFactory
  */
 final class ClientFactoryTest extends TestCase
 {

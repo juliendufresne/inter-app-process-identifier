@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace JulienDufresne\InterAppRequestIdentifier\Tests\Factory;
+namespace JulienDufresne\RequestId\Tests\Factory;
 
-use JulienDufresne\InterAppRequestIdentifier\Factory\Generator\UniqueIdGeneratorInterface;
-use JulienDufresne\InterAppRequestIdentifier\Factory\RequestIdFromRequestFactory;
+use JulienDufresne\RequestId\Factory\Generator\UniqueIdGeneratorInterface;
+use JulienDufresne\RequestId\Factory\RequestIdFromRequestFactory;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \JulienDufresne\InterAppRequestIdentifier\Factory\RequestIdFromRequestFactory
+ * @covers \JulienDufresne\RequestId\Factory\RequestIdFromRequestFactory
  */
 final class RequestIdFromRequestFactoryTest extends TestCase
 {

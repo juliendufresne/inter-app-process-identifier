@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace JulienDufresne\InterAppRequestIdentifier\Factory;
+namespace JulienDufresne\RequestId\Factory;
 
-use JulienDufresne\InterAppRequestIdentifier\RequestIdentifier;
-use JulienDufresne\InterAppRequestIdentifier\RequestIdentifierInterface;
+use JulienDufresne\RequestId\RequestId;
+use JulienDufresne\RequestId\RequestIdInterface;
 
-final class RequestIdFromConsoleFactory extends AbstractRequestIdentifierFactory
+final class RequestIdFromConsoleFactory extends AbstractRequestIdFactory
 {
-    public function create(?string $parentRequestId = null, ?string $rootRequestId = null): RequestIdentifierInterface
+    public function create(?string $parentRequestId = null, ?string $rootRequestId = null): RequestIdInterface
     {
         $current = $this->uniqueIdentifierGenerator->generateUniqueIdentifier();
 
-        return new RequestIdentifier($current, $parentRequestId, $rootRequestId);
+        return new RequestId($current, $parentRequestId, $rootRequestId);
     }
 }

@@ -6,7 +6,7 @@ namespace {
     $mockClassExistsFunction = false;
 }
 
-namespace JulienDufresne\InterAppRequestIdentifier\Factory\Generator {
+namespace JulienDufresne\RequestId\Factory\Generator {
     // override the global class_exists function used in the RamseyUuidGenerator class to test both scenario
     function class_exists($className)
     {
@@ -20,12 +20,12 @@ namespace JulienDufresne\InterAppRequestIdentifier\Factory\Generator {
     }
 }
 
-namespace JulienDufresne\InterAppRequestIdentifier\Tests\Factory\Generator {
-    use JulienDufresne\InterAppRequestIdentifier\Factory\Generator\RamseyUuidGenerator;
+namespace JulienDufresne\RequestId\Tests\Factory\Generator {
+    use JulienDufresne\RequestId\Factory\Generator\RamseyUuidGenerator;
     use PHPUnit\Framework\TestCase;
 
     /**
-     * @covers \JulienDufresne\InterAppRequestIdentifier\Factory\Generator\RamseyUuidGenerator
+     * @covers \JulienDufresne\RequestId\Factory\Generator\RamseyUuidGenerator
      */
     final class RamseyUuidGeneratorTest extends TestCase
     {

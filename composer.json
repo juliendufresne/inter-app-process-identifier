@@ -19,12 +19,12 @@
     },
     "autoload": {
         "psr-4": {
-            "JulienDufresne\\InterAppRequestIdentifier\\": "src/"
+            "JulienDufresne\\RequestId\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "JulienDufresne\\InterAppRequestIdentifier\\Tests\\": "tests/"
+            "JulienDufresne\\RequestId\\Tests\\": "tests/"
         }
     },
     "license": "MIT",

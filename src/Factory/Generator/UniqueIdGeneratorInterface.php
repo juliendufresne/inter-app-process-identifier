@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace JulienDufresne\InterAppRequestIdentifier\Factory\Generator;
+namespace JulienDufresne\RequestId\Factory\Generator;
 
 /**
  * Interface that your generator must implement to provide a way to generate unique identifier.

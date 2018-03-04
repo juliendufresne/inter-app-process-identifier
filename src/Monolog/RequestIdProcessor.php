@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace JulienDufresne\InterAppRequestIdentifier\Monolog;
+namespace JulienDufresne\RequestId\Monolog;
 
-use JulienDufresne\InterAppRequestIdentifier\RequestIdentifierInterface;
+use JulienDufresne\RequestId\RequestIdInterface;
 
-final class RequestIdentifierProcessor
+final class RequestIdProcessor
 {
     /** @var string */
     private $extraEntryName;
-    /** @var RequestIdentifierInterface */
+    /** @var RequestIdInterface */
     private $requestIdentifier;
     /** @var string */
     private $rootAppEntryName;
@@ -20,14 +20,14 @@ final class RequestIdentifierProcessor
     private $currentAppEntryName;
 
     /**
-     * @param RequestIdentifierInterface $requestIdentifier
-     * @param string                     $extraEntryName
-     * @param string                     $currentAppEntryName
-     * @param string                     $rootAppEntryName
-     * @param string                     $parentAppEntryName
+     * @param RequestIdInterface $requestIdentifier
+     * @param string             $extraEntryName
+     * @param string             $currentAppEntryName
+     * @param string             $rootAppEntryName
+     * @param string             $parentAppEntryName
      */
     public function __construct(
-        RequestIdentifierInterface $requestIdentifier,
+        RequestIdInterface $requestIdentifier,
         string $extraEntryName = 'request_id',
         string $currentAppEntryName = 'current',
         string $rootAppEntryName = 'root',

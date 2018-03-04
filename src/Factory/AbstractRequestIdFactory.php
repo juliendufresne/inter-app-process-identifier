@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace JulienDufresne\InterAppRequestIdentifier\Factory;
+namespace JulienDufresne\RequestId\Factory;
 
-use JulienDufresne\InterAppRequestIdentifier\Factory\Generator\UniqueIdGeneratorInterface;
+use JulienDufresne\RequestId\Factory\Generator\UniqueIdGeneratorInterface;
 
-abstract class AbstractRequestIdentifierFactory
+abstract class AbstractRequestIdFactory
 {
     /** @var UniqueIdGeneratorInterface */
     protected $uniqueIdentifierGenerator;

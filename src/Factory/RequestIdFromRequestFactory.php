@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace JulienDufresne\InterAppRequestIdentifier\Factory;
+namespace JulienDufresne\RequestId\Factory;
 
-use JulienDufresne\InterAppRequestIdentifier\Factory\Generator\UniqueIdGeneratorInterface;
-use JulienDufresne\InterAppRequestIdentifier\RequestIdentifier;
-use JulienDufresne\InterAppRequestIdentifier\RequestIdentifierInterface;
+use JulienDufresne\RequestId\Factory\Generator\UniqueIdGeneratorInterface;
+use JulienDufresne\RequestId\RequestId;
+use JulienDufresne\RequestId\RequestIdInterface;
 
-final class RequestIdFromRequestFactory extends AbstractRequestIdentifierFactory
+final class RequestIdFromRequestFactory extends AbstractRequestIdFactory
 {
     /** @var string */
     private $parentRequestIdHeaderName;
@@ -28,14 +28,14 @@ final class RequestIdFromRequestFactory extends AbstractRequestIdentifierFactory
     /**
      * @param string[] $requestHeaders list of all your request headers
      *
-     * @return RequestIdentifierInterface
+     * @return RequestIdInterface
      */
-    public function create(array $requestHeaders): RequestIdentifierInterface
+    public function create(array $requestHeaders): RequestIdInterface
     {
         $current = $this->uniqueIdentifierGenerator->generateUniqueIdentifier();
         $requestHeaders = $this->sanitizeHeaderKeys($requestHeaders);
 
-        return new RequestIdentifier(
+        return new RequestId(
             $current,
             $this->extractHeader($requestHeaders, $this->parentRequestIdHeaderName),
             $this->extractHeader($requestHeaders, $this->rootRequestIdHeaderName)
