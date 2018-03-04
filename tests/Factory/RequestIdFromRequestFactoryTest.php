@@ -101,6 +101,21 @@ final class RequestIdFromRequestFactoryTest extends TestCase
                 'bar',
                 'baz',
             ],
+            'case insensitive' => [
+                'headers' => [
+                    'x-parent-request-id' => 'bar',
+                    'x-root-request-id' => 'baz',
+                    'Accept' => '*/*',
+                    'Accept-Language' => 'en-us',
+                    'Accept-Encoding' => 'gzip, deflate',
+                    'User-Agent' => 'Mozilla/4.0',
+                    'Host' => 'www.example.com',
+                    'Connection' => 'Keep-Alive',
+                ],
+                'foo',
+                'bar',
+                'baz',
+            ],
         ];
     }
 }

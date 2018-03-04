@@ -21,8 +21,8 @@ final class RequestIdFromRequestFactory extends AbstractRequestIdentifierFactory
         string $parentRequestIdHeaderName = 'X-Parent-Request-Id'
     ) {
         parent::__construct($uniqueIdentifierGenerator);
-        $this->parentRequestIdHeaderName = $parentRequestIdHeaderName;
-        $this->rootRequestIdHeaderName = $rootRequestIdHeaderName;
+        $this->parentRequestIdHeaderName = $this->sanitizeHeaderKey($parentRequestIdHeaderName);
+        $this->rootRequestIdHeaderName = $this->sanitizeHeaderKey($rootRequestIdHeaderName);
     }
 
     /**
@@ -33,11 +33,39 @@ final class RequestIdFromRequestFactory extends AbstractRequestIdentifierFactory
     public function create(array $requestHeaders): RequestIdentifierInterface
     {
         $current = $this->uniqueIdentifierGenerator->generateUniqueIdentifier();
+        $requestHeaders = $this->sanitizeHeaderKeys($requestHeaders);
 
         return new RequestIdentifier(
             $current,
-            $requestHeaders[$this->parentRequestIdHeaderName] ?? null,
-            $requestHeaders[$this->rootRequestIdHeaderName] ?? null
+            $this->extractHeader($requestHeaders, $this->parentRequestIdHeaderName),
+            $this->extractHeader($requestHeaders, $this->rootRequestIdHeaderName)
         );
+    }
+
+    private function sanitizeHeaderKeys(array $requestHeaders): array
+    {
+        $newRequestHeaders = [];
+        foreach ($requestHeaders as $key => $value) {
+            $newRequestHeaders[$this->sanitizeHeaderKey($key)] = $value;
+        }
+
+        return $newRequestHeaders;
+    }
+
+    private function sanitizeHeaderKey(string $key): string
+    {
+        // an header is case insensitive
+        return mb_strtolower($key);
+    }
+
+    private function extractHeader(array $requestHeaders, string $headerName)
+    {
+        if (!array_key_exists($headerName, $requestHeaders)) {
+            return null;
+        }
+
+        $values = $requestHeaders[$headerName];
+
+        return is_array($values) ? implode(',', $values) : $values;
     }
 }
