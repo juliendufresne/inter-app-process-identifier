@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace JulienDufresne\InterAppRequestIdentifier;
+namespace JulienDufresne\RequestId;
 
 /**
  * Determines the context of the application's current execution.
  */
-final class RequestIdentifier implements RequestIdentifierInterface
+final class RequestId implements RequestIdInterface
 {
     /** @var string */
     private $root;

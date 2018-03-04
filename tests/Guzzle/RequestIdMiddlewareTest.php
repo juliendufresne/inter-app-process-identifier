@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace JulienDufresne\InterAppRequestIdentifier\Tests\Guzzle;
+namespace JulienDufresne\RequestId\Tests\Guzzle;
 
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
@@ -10,8 +10,8 @@ use GuzzleHttp\Middleware;
 use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
-use JulienDufresne\InterAppRequestIdentifier\Guzzle\RequestIdMiddleware;
-use JulienDufresne\InterAppRequestIdentifier\RequestIdentifierInterface;
+use JulienDufresne\RequestId\Guzzle\RequestIdMiddleware;
+use JulienDufresne\RequestId\RequestIdInterface;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\RequestInterface;
 
@@ -48,7 +48,7 @@ final class RequestIdMiddlewareTest extends TestCase
                 },
             ]
         );
-        $requestIdentifierMock = $this->createMock(RequestIdentifierInterface::class);
+        $requestIdentifierMock = $this->createMock(RequestIdInterface::class);
         $requestIdentifierMock->expects(self::once())
                                     ->method('getRootAppRequestId')
                                     ->willReturn($rootHeaderValue);
